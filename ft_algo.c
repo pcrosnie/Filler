@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:39:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 12:03:38 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 16:02:44 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		ft_check_valid_pos(int i, int j, t_data *ptr)
 		b = 0;
 		while (b < ptr->piece_width && j + ptr->b + b < ptr->map_width)
 		{
+			if (i + ptr->a + a < 0 || j + ptr->b + b < 0)
+				return (0);
 			if (ptr->piece[a][b] == '*' && ptr->map[i + ptr->a + a][j + ptr->b + b] == ptr->c)
 				nb_sup++;
 			else if (ptr->map[i + ptr->a + a][j + ptr->b + b] != '.' && ptr->map[i + ptr->a + a][j + ptr->b + b] != ptr->c)
@@ -99,8 +101,12 @@ void	ft_algo(t_data *ptr)
 
 	i = 0;
 	ft_check_possible_positions(ptr);
-		ft_putnbr(ptr->possible_positions[0][i]);
+//	while (i < 10)
+//	{
+		ft_putnbr(ptr->possible_positions[0][i] - 1);
 		ft_putchar(' ');
 		ft_putnbr(ptr->possible_positions[1][i]);
 		ft_putchar('\n');
+//		i++;
+//	}
 }

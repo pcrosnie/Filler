@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:58:26 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 12:15:22 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 16:13:38 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct  s_data
 }               t_data;
 
 void	ft_algo(t_data *ptr);
-void	ft_parse_info(char *input, t_data *ptr);
+void	ft_parse_info(char **input, t_data *ptr);
+void	ft_parse_map(char *line, t_data *ptr);
+void	ft_parse_player(char *line, t_data *ptr);
+void	ft_parse_piece(char *line, t_data *ptr);
 
 #endif

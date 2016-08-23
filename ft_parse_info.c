@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 12:19:41 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 14:54:51 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,49 @@ void	ft_recup_map_size(char *input, t_data *ptr)
 	free(str);
 }
 
-void	ft_parse_info(char *line, t_data *ptr)
+void	ft_parse_player(char *line, t_data *ptr)
 {
-	char **input;
+	if (ft_strstr(line, "exec p1 :") != NULL)
+		ptr->c = 'O';
+	if (ft_strstr(line, "exec p2 :") != NULL)
+		ptr->c = 'X';
+}
 
-	input = ft_strsplit(line, '\n');
+void	ft_parse_map(char *line, t_data *ptr)
+{
+	int i;
+
+	i = 0;
+	ft_recup_map_size(line, ptr);
+	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 1));
+	while (i < ptr->map_height)
+	{
+		get_next_line(0, &line);
+		ptr->map[i++] = ft_str_cut(line);
+	}
+	ptr->map[i] = NULL;
+}
+
+void	ft_parse_piece(char *line, t_data *ptr)
+{
+	int i;
+
+	i = 0;
+	ft_recup_piece_size(line, ptr);
+	ptr->piece = (char **)malloc(sizeof(char *) * (ptr->piece_height + 1));
+	while (i < ptr->piece_height)
+	{
+		get_next_line(0, &line);
+		ptr->piece[i++] = ft_strdup(line);
+	}
+	ptr->piece[i] = NULL;
+}
+
+void	ft_parse_info(char **input, t_data *ptr)
+{
+//	char **input;
+
+//	input = ft_strsplit(line, '\n');
 	ft_recup_map_size(input[0], ptr);
 	ft_recup_map(input, ptr);
 	ft_recup_piece(input, ptr);
