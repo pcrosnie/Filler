@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 09:58:54 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 12:19:41 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,11 @@ void	ft_recup_map_size(char *input, t_data *ptr)
 	free(str);
 }
 
-void	ft_parse_info(char **input, t_data *ptr)
+void	ft_parse_info(char *line, t_data *ptr)
 {
+	char **input;
+
+	input = ft_strsplit(line, '\n');
 	ft_recup_map_size(input[0], ptr);
 	ft_recup_map(input, ptr);
 	ft_recup_piece(input, ptr);

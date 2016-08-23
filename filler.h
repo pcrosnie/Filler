@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:58:26 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 09:48:00 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 12:15:22 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ typedef struct  s_data
 {
 	char	**map;
 	char	**piece;
+	char	**possible_positions;
 	int		piece_height;
 	int		piece_width;
 	int		map_height;
 	int		map_width;
 	int		player;
+	int		a;
+	int		b;
 	char	c;
 }               t_data;
 
-void	ft_parse_info(char **input, t_data *ptr);
+void	ft_algo(t_data *ptr);
+void	ft_parse_info(char *input, t_data *ptr);
 
 #endif
