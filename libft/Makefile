@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:07:03 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/08/22 11:33:42 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/08/23 09:37:36 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC += ft_putendl_fd.c
 SRC += ft_putnbr.c
 SRC += ft_putnbr_fd.c
 SRC += ft_putstr.c
+SRC += ft_print_char_tab.c
 SRC += ft_putstr_fd.c
 SRC += ft_strcat.c
 SRC += ft_strchr.c

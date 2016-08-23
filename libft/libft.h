@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:27:01 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/22 11:34:23 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 09:37:01 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct		s_list
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+void				ft_print_char_tab(char **tab);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				*ft_memcpy(void *dst, const void *src, size_t n);

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/22 17:14:52 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 09:58:47 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ int		main(void)
 	i = 0;
 	line = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
 	input = (char **)malloc(sizeof(char *) * (BUFF_SIZE + 1));
-	ptr = (t_data *)malloc(sizeof(t_data));
+	ptr = (t_data *)malloc(sizeof(t_data) * 100);
 	ptr->player = ft_first_read(ptr);
 	line = ft_memset(line, '\0', BUFF_SIZE + 1);
-	while (read(0, line, BUFF_SIZE))
+	while (read(0, line, BUFF_SIZE + 1))
+	{	
 		input[i++] = ft_strdup(line);
+		line = ft_memset(line, '\0', BUFF_SIZE + 1);
+	}
 	ft_parse_info(input, ptr);
-	ft_putnbr(ptr->map_height);
-	ft_putchar('\n');
-	ft_putnbr(ptr->map_width);
 	return (0);
 }
