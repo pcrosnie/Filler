@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:01:54 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/22 15:39:24 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:27:35 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char		*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	if (s2[0] == '\0')
 		return ((char *)s1);
 	while (i < n && s1[i])

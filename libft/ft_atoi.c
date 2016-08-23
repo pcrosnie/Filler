@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:42:06 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/03 15:34:07 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:32:11 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		ft_atoi(const char *str)
 	i = 0;
 	nb = 0;
 	n = 0;
+	if (!str)
+		return (0);
 	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r'
 			|| str[i] == '\v' || str[i] == '\f')
 		i++;

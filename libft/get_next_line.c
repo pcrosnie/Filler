@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 13:31:04 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/22 15:32:15 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:17:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int					get_next_line(int const fd, char **line)
 	int				ret;
 	static char		*reste = NULL;
 
-	if (!line)
+	if (!line || !*line)
 		return (-1);
 	if (reste && ft_getline(&reste, line))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 14:54:51 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/23 17:42:22 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ char	*ft_str_cut(char *input)
 	int j;
 	char *str;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(input) - 3));
+	if (!input)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(input)));
 	i = 4;
 	j = 0;
 	while (input[i])
@@ -50,37 +52,6 @@ char	*ft_str_cut(char *input)
 	}
 	str[j] = '\0';
 	return (str);
-}
-
-void	ft_recup_map(char **input, t_data *ptr)
-{
-	int i;
-	int j;
-
-	j = 2;
-	i = 0;
-	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 1));
-	while (i < ptr->map_height)
-	{
-		ptr->map[i++] = ft_str_cut(input[j++]);
-	}
-	ptr->map[i] = NULL;
-}
-
-void	ft_recup_piece(char **intput, t_data *ptr)
-{
-	int i;
-	int j;
-
-	j = 0;
-	ptr->piece = (char **)malloc(sizeof(char *) * (ptr->map_height * 2));
-	ft_recup_piece_size(intput[ptr->map_height + 2], ptr);
-	i = ptr->map_height + 3;
-	while (intput[i])
-	{
-		ptr->piece[j++] = ft_strdup(intput[i++]);
-	}
-	ptr->piece[j] = NULL;
 }
 
 void	ft_recup_map_size(char *input, t_data *ptr)
@@ -120,7 +91,8 @@ void	ft_parse_map(char *line, t_data *ptr)
 
 	i = 0;
 	ft_recup_map_size(line, ptr);
-	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 1));
+	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 3));
+//	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (i < ptr->map_height)
 	{
 		get_next_line(0, &line);
@@ -135,21 +107,12 @@ void	ft_parse_piece(char *line, t_data *ptr)
 
 	i = 0;
 	ft_recup_piece_size(line, ptr);
-	ptr->piece = (char **)malloc(sizeof(char *) * (ptr->piece_height + 1));
+	ptr->piece = (char **)malloc(sizeof(char *) * (ptr->piece_height + 3));
+//	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (i < ptr->piece_height)
 	{
 		get_next_line(0, &line);
 		ptr->piece[i++] = ft_strdup(line);
 	}
 	ptr->piece[i] = NULL;
-}
-
-void	ft_parse_info(char **input, t_data *ptr)
-{
-//	char **input;
-
-//	input = ft_strsplit(line, '\n');
-	ft_recup_map_size(input[0], ptr);
-	ft_recup_map(input, ptr);
-	ft_recup_piece(input, ptr);
 }

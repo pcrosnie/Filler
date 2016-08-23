@@ -1,4 +1,6 @@
-seed = 304
+seed = 5222
+X: error on input
+../paulo_player: Segfault at 18
 players/hcao.filler won
 Score:
-98AGAINST2
+96AGAINST18
