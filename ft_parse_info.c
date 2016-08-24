@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 17:42:22 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 11:42:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	ft_parse_map(char *line, t_data *ptr)
 	i = 0;
 	ft_recup_map_size(line, ptr);
 	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 3));
-//	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (i < ptr->map_height)
 	{
 		get_next_line(0, &line);
@@ -100,6 +99,30 @@ void	ft_parse_map(char *line, t_data *ptr)
 	}
 	ptr->map[i] = NULL;
 }
+/*
+void	ft_real_piece_size(t_data *ptr, int tmp)
+{
+	int i;
+	int j;
+	int line;
+	int col;
+
+	i = 0;
+	j = 0;
+	line = 0;
+	col = 0;
+	while (i < ptr->piece_height)
+	{
+		j = 0;
+		while (j < ptr->piece_width)
+		{
+			if (ptr->map[i][j] == '*')
+				line++;
+			j++;
+		}
+		i++;
+	}
+}*/
 
 void	ft_parse_piece(char *line, t_data *ptr)
 {
@@ -108,7 +131,6 @@ void	ft_parse_piece(char *line, t_data *ptr)
 	i = 0;
 	ft_recup_piece_size(line, ptr);
 	ptr->piece = (char **)malloc(sizeof(char *) * (ptr->piece_height + 3));
-//	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (i < ptr->piece_height)
 	{
 		get_next_line(0, &line);
