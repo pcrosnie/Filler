@@ -33,7 +33,7 @@ void	ft_reach_center(t_data *ptr)
 	record_dist = ft_dist_center(ptr->map_width / 2, ptr->map_height / 2, ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
 	while (i < BUFF_SIZE)
 	{
-		ft_output(ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
+//		ft_output(ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
 		while (ptr->possible_positions[0][i] == 0 && ptr->possible_positions[1][i] == 0 && i < BUFF_SIZE)
 			i++;
 		if (i == BUFF_SIZE)

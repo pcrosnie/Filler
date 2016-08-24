@@ -48,12 +48,14 @@ int		ft_set_poss_pos(int i, int j, t_data *ptr)
 	int a;
 
 	a = 0;
-	while (ptr->possible_positions[0][a] && a < BUFF_SIZE)
+/*	while (ptr->possible_positions[0][a] && a < BUFF_SIZE)*/
+	while (a < ptr->nb_sol)
 	{
 		if (ptr->possible_positions[0][a] == i + ptr->a && ptr->possible_positions[1][a] == j + ptr->b)
 			return (0);
 		a++;
 	}
+	ptr->nb_sol++;
 	ptr->possible_positions[0][a] = i + ptr->a;
 	ptr->possible_positions[1][a] = j + ptr->b;
 	return (0);
@@ -113,10 +115,10 @@ void	ft_algo(t_data *ptr)
 
 	i = 0;
 	ft_check_possible_positions(ptr);
-	ft_strat(ptr);
-/*	
-//	while (i < 50)
-//	{
+//	ft_strat(ptr);
+	
+	while (i < ptr->nb_sol)
+	{
 		if (ptr->possible_positions[0][i] - 1 > 0)
 		ft_putnbr(ptr->possible_positions[0][i] - 1);
 		else
@@ -124,6 +126,6 @@ void	ft_algo(t_data *ptr)
 		ft_putchar(' ');
 		ft_putnbr(ptr->possible_positions[1][i]);
 		ft_putchar('\n');
-//		i++;
-//	}*/
+		i++;
+	}
 }

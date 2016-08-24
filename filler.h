@@ -36,6 +36,7 @@ typedef struct  s_data
 	int		strat;
 	int		my_quart;
 	int		adv_quart;
+	int		nb_sol;
 }               t_data;
 
 typedef	struct	s_pos

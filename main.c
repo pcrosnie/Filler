@@ -98,6 +98,7 @@ int		main(void)
 	ptr->piece_width = 0;
 	ptr->my_quart = 0;
 	ptr->strat = 0;
+	ptr->nb_sol = 0;
 //	ptr->player = ft_first_read(ptr);
 	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (get_next_line(0, &line))
@@ -109,6 +110,7 @@ int		main(void)
 		if (ft_strstr(line, "Piece") != NULL)
 		{
 			ft_parse_piece(line, ptr);
+			ptr->nb_sol = 0;
 			ft_algo(ptr);
 			ft_free_dat(ptr);
 		}
