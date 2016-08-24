@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/24 13:16:13 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/08/24 12:19:03 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/08/24 15:12:30 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = paulo_player
 
 LIB = libft/libft.a
 
-SRC = main.c ft_parse_info.c ft_algo.c ft_strat.c ft_recup.c
+SRC = main.c ft_parse_info.c ft_algo.c ft_strat.c ft_recup.c ft_strat_suit.c
 
 SRCO = $(SRC:.c=.o)
 

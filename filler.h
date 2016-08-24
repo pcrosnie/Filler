@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:58:26 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 12:18:45 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 15:16:18 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FILLER_H
 
 # include "libft/libft.h"
+
+/* strat :  1 = va au centre ; 2 = trace ligne de blocage a centre + 1 ; 3 remplit partie adverse; 
+ * 4 remplit sa partie;*/
 
 typedef struct  s_data
 {
@@ -30,6 +33,9 @@ typedef struct  s_data
 	int		a;
 	int		b;
 	char	c;
+	int		strat;
+	int		my_quart;
+	int		adv_quart;
 }               t_data;
 
 typedef	struct	s_pos
@@ -44,6 +50,8 @@ typedef	struct	s_pos
 	int		adv_posYmin;
 }				t_pos;
 
+void	ft_output(int a, int b);
+void	ft_reach_center(t_data *ptr);
 void	ft_algo(t_data *ptr);
 void	ft_parse_map(char *line, t_data *ptr);
 void	ft_parse_player(char *line, t_data *ptr);

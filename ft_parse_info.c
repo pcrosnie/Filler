@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 11:42:31 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 16:44:50 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,28 +100,39 @@ void	ft_parse_map(char *line, t_data *ptr)
 	ptr->map[i] = NULL;
 }
 /*
-void	ft_real_piece_size(t_data *ptr, int tmp)
+void	ft_cut_piece(t_data *ptr)
 {
 	int i;
 	int j;
-	int line;
-	int col;
+	int k;
+	char **tmp;
 
 	i = 0;
 	j = 0;
-	line = 0;
-	col = 0;
+	k = 0;
+	tmp = (char **)malloc(sizeof(char *) * 2);
+	tmp[0] = (char *)malloc(sizeof(char) * (ptr->piece_height * ptr->piece_width));
+	tmp[1] = (char *)malloc(sizeof(char) * (ptr->piece_height * ptr->piece_width));
 	while (i < ptr->piece_height)
 	{
 		j = 0;
+		tmp = 0;
 		while (j < ptr->piece_width)
 		{
-			if (ptr->map[i][j] == '*')
-				line++;
+			if (ptr->piece[i][j] == '*')
+			{
+				tmp[0][k] = i;
+				tmp[1][k++] = j;
+			}
 			j++;
 		}
 		i++;
 	}
+	i = 0;
+	while (i < ptr->piece_height)
+		free(ptr->piece[i]);
+	free(ptr->piece);
+	ft_reset_piece(tmp, k);
 }*/
 
 void	ft_parse_piece(char *line, t_data *ptr)

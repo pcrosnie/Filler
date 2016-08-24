@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 17:38:05 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 15:15:32 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ void	ft_free_dat(t_data *ptr)
 	free(ptr->possible_positions);
 }
 
+void	ft_output(int a, int b)
+{
+	ft_putnbr(a);
+	ft_putchar(' ');
+	ft_putnbr(b);
+	ft_putchar('\n');
+}
+
 int		main(void)
 {
 	char *line;
@@ -88,6 +96,8 @@ int		main(void)
 	ptr->map_width = 0;
 	ptr->piece_height = 0;
 	ptr->piece_width = 0;
+	ptr->my_quart = 0;
+	ptr->strat = 0;
 //	ptr->player = ft_first_read(ptr);
 	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (get_next_line(0, &line))

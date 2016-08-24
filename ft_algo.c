@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:39:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 12:20:37 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 16:52:44 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,18 @@ int		ft_set_poss_pos(int i, int j, t_data *ptr)
 void	ft_check_pos_for_piece(int i, int j, t_data *ptr)
 {
 	ptr->a = 0;
-//	if (i < 0)
-//		i = 0;
-//	if (j < 0)
-//		j = 0;
+	if (i < 0)
+		i = 0;
+	if (j < 0)
+		j = 0;
 	while (ptr->a < ptr->piece_height * 2 + 1 && ptr->a + i < ptr->map_height)
 	{
 		ptr->b = 0;
 		while (ptr->b < ptr->piece_width * 2 + 1 && ptr->b + j < ptr->map_width)
 		{
 			if (ptr->b + j + ptr->piece_width > ptr->map_width || ptr->a + i + ptr->piece_height > ptr->map_width)
+				break;
+			if (ptr->b + j + ptr->piece_width < 0 || ptr->a + i + ptr->piece_height < 0)
 				break;
 			if (ft_check_valid_pos(i, j, ptr) == 1)
 				ft_set_poss_pos(i, j, ptr);
@@ -112,7 +114,7 @@ void	ft_algo(t_data *ptr)
 	i = 0;
 	ft_check_possible_positions(ptr);
 	ft_strat(ptr);
-	/*
+/*	
 //	while (i < 50)
 //	{
 		if (ptr->possible_positions[0][i] - 1 > 0)
