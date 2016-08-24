@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:39:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/23 17:56:46 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/24 11:02:02 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int		ft_check_valid_pos(int i, int j, t_data *ptr)
 	a = 0;
 	b = 0;
 	nb_sup = 0;
-	while (a < ptr->piece_height && (i + ptr->a + a) < ptr->map_height - 1)
+	while (a < ptr->piece_height && (i + ptr->a + a) < ptr->map_height)
 	{
 		b = 0;
-		while (b < ptr->piece_width && (j + ptr->b + b) < ptr->map_width - 1)
+		while (b < ptr->piece_width && (j + ptr->b + b) < ptr->map_width)
 		{
 			if (i + ptr->a + a < 0 || j + ptr->b + b < 0 || !(ptr->map[i + ptr->a + a][j + ptr->b + b]))
 				return (0);
@@ -62,15 +62,17 @@ int		ft_set_poss_pos(int i, int j, t_data *ptr)
 void	ft_check_pos_for_piece(int i, int j, t_data *ptr)
 {
 	ptr->a = 0;
-	if (i < 0)
-		i = 0;
-	if (j < 0)
-		j = 0;
-	while (ptr->a < ptr->piece_height * 2 + 1 && ptr->a + i < ptr->map_height - 1)
+//	if (i < 0)
+//		i = 0;
+//	if (j < 0)
+//		j = 0;
+	while (ptr->a < ptr->piece_height * 2 + 1 && ptr->a + i < ptr->map_height)
 	{
 		ptr->b = 0;
-		while (ptr->b < ptr->piece_width * 2 + 1 && ptr->b + j < ptr->map_width - 1)
+		while (ptr->b < ptr->piece_width * 2 + 1 && ptr->b + j < ptr->map_width)
 		{
+			if (ptr->b + j + ptr->piece_width > ptr->map_width || ptr->a + i + ptr->piece_height > ptr->map_width)
+				break;
 			if (ft_check_valid_pos(i, j, ptr) == 1)
 				ft_set_poss_pos(i, j, ptr);
 			ptr->b++;
@@ -109,7 +111,7 @@ void	ft_algo(t_data *ptr)
 
 	i = 0;
 	ft_check_possible_positions(ptr);
-//	while (i < 10)
+//	while (i < 50)
 //	{
 		if (ptr->possible_positions[0][i] - 1 > 0)
 		ft_putnbr(ptr->possible_positions[0][i] - 1);
