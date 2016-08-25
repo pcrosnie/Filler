@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 11:42:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/25 10:01:16 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 13:53:39 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	ft_strat(t_data *ptr)
 		ft_check_for_strat(ptr, e);
 	if (ptr->strat == 1)
 		ft_reach_center(ptr);
-/*	if (ptr->strat == 2)
+	else if (ptr->strat == 2)
 		ft_block(ptr, e);
-	if (ptr->strat == 3)
+/*	else if (ptr->strat == 3)
 		ft_fill_adv(ptr, e);
-	if (ptr->strat == 4)
+	else if (ptr->strat == 4)
 		ft_fill_mine(ptr, e);*/
 }

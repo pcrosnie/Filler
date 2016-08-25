@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:58:26 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 15:16:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 13:48:24 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct  s_data
 	int		my_quart;
 	int		adv_quart;
 	int		nb_sol;
+	int		center;				/* center = 1 > me center = 2 > adv*/
 }               t_data;
 
 typedef	struct	s_pos
@@ -51,6 +52,7 @@ typedef	struct	s_pos
 	int		adv_posYmin;
 }				t_pos;
 
+void	ft_block(t_data *ptr, t_pos *e);
 void	ft_output(int a, int b);
 void	ft_reach_center(t_data *ptr);
 void	ft_algo(t_data *ptr);

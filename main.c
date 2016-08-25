@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 15:15:32 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 11:51:13 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void	ft_free_dat(t_data *ptr)
 
 void	ft_output(int a, int b)
 {
-	ft_putnbr(a);
+	if (a > 0)
+		ft_putnbr(a);
+	else
+		ft_putnbr(0);
 	ft_putchar(' ');
 	ft_putnbr(b);
 	ft_putchar('\n');
