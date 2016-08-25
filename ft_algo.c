@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 10:39:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 16:52:44 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 10:53:10 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_check_valid_pos(int i, int j, t_data *ptr)
 				return (0);
 			if (ptr->piece[a][b] == '*' && ptr->map[i + ptr->a + a][j + ptr->b + b] == ptr->c)
 				nb_sup++;
-			else if (ptr->map[i + ptr->a + a][j + ptr->b + b] != '.' && ptr->map[i + ptr->a + a][j + ptr->b + b] != ptr->c)
+			else if (ptr->map[i + ptr->a + a][j + ptr->b + b] != '.' && ptr->map[i + ptr->a + a][j + ptr->b + b] != ptr->c && ptr->map[i + ptr->a + a][j + ptr->b + b] != ptr->c + 32)
 				return (0);
 			b++;
 		}
@@ -73,7 +73,7 @@ void	ft_check_pos_for_piece(int i, int j, t_data *ptr)
 		ptr->b = 0;
 		while (ptr->b < ptr->piece_width * 2 + 1 && ptr->b + j < ptr->map_width)
 		{
-			if (ptr->b + j + ptr->piece_width > ptr->map_width || ptr->a + i + ptr->piece_height > ptr->map_width)
+			if (ptr->b + j + ptr->piece_width > ptr->map_width || ptr->a + i + ptr->piece_height > ptr->map_height)
 				break;
 			if (ptr->b + j + ptr->piece_width < 0 || ptr->a + i + ptr->piece_height < 0)
 				break;
@@ -115,9 +115,9 @@ void	ft_algo(t_data *ptr)
 
 	i = 0;
 	ft_check_possible_positions(ptr);
-//	ft_strat(ptr);
+	ft_strat(ptr);
 	
-	while (i < ptr->nb_sol)
+/*	while (i < ptr->nb_sol)
 	{
 		if (ptr->possible_positions[0][i] - 1 > 0)
 		ft_putnbr(ptr->possible_positions[0][i] - 1);
@@ -127,5 +127,5 @@ void	ft_algo(t_data *ptr)
 		ft_putnbr(ptr->possible_positions[1][i]);
 		ft_putchar('\n');
 		i++;
-	}
+	}*/
 }

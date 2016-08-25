@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 14:29:06 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 18:08:58 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 10:47:26 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,9 @@ void	ft_reach_center(t_data *ptr)
 	i = 0;
 	record = 0;
 	record_dist = ft_dist_center(ptr->map_width / 2, ptr->map_height / 2, ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
-	while (i < BUFF_SIZE)
+	while (i < ptr->nb_sol)
 	{
-//		ft_output(ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
-		while (ptr->possible_positions[0][i] == 0 && ptr->possible_positions[1][i] == 0 && i < BUFF_SIZE)
-			i++;
-		if (i == BUFF_SIZE)
-			break;
+	//	ft_output(ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
 		dist = ft_dist_center(ptr->map_width / 2, ptr->map_height / 2, ptr->possible_positions[0][i] - 1, ptr->possible_positions[1][i]);
 		if (dist < record_dist)
 		{

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/24 16:44:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/25 10:53:28 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,118 @@ void	ft_parse_map(char *line, t_data *ptr)
 	ptr->map[i] = NULL;
 }
 
+void	ft_cut_first_lines(t_data *ptr)
+{
+	int i;
+
+	i = 0;
+	free(ptr->piece[0]);
+	while (i < ptr->piece_height)
+	{
+		ptr->piece[i] = ptr->piece[i + 1];
+		i++;
+	}
+	ptr->piece_height--;
+}
+
+void	ft_cut_last_lines(t_data *ptr)
+{
+	int i;
+
+	i = ptr->piece_height - 1;
+	free(ptr->piece[i]);
+	ptr->piece[i] = NULL;
+	ptr->piece_height--;
+}
+
+int		ft_check_first_star(t_data *ptr)
+{
+	int i;
+	int j;
+	int tmp;
+
+	i = 0;
+	j = 0;
+	tmp = ptr->piece_width;
+	while (i < ptr->piece_height)
+	{
+		while (j < ptr->piece_width)
+		{
+			if (ptr->piece[i][j] == '*' && j < tmp)
+				tmp = j;
+			j++;
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+int		ft_check_last_star(t_data *ptr)
+{
+	int i;
+	int j;
+	int tmp;
+
+	i = 0;
+	j = 0;
+	tmp = 0;
+	while (i < ptr->piece_height)
+	{
+		j = 0;
+		while (j < ptr->piece_width)
+		{
+			if (ptr->piece[i][j] == '*' && j > tmp)
+				tmp = j;
+			j++;
+		}
+		i++;
+	}
+	return (tmp + 1);
+}
+
+void	ft_cut_width(t_data *ptr, int start, int end)
+{
+	int i;
+	int j;
+	int k;
+	char *tmp;
+
+	i = 0;
+	k = 0;
+	j = start;
+	tmp = (char *)malloc(sizeof(char) * (end - start + 1));
+	while (i < ptr->piece_height)
+	{
+		j = start;
+		k = 0;
+		tmp = ft_memset(tmp, '\0', end - start + 1);
+		while (j < end)
+		{
+			tmp[k] = ptr->piece[i][j];
+			k++;
+			j++;
+		}
+		free(ptr->piece[i]);
+		ptr->piece[i] = ft_strdup(tmp);
+		i++;
+	}
+	ptr->piece_width = end - start;
+}
+
+void	ft_cut_piece(t_data *ptr)
+{
+//	int i;
+	int j;
+
+//	while (ft_strstr(ptr->piece[0], "*") == NULL)
+//		ft_cut_first_lines(ptr);
+	while (ft_strstr(ptr->piece[ptr->piece_height - 1], "*") == NULL)
+		ft_cut_last_lines(ptr);
+//	i = ft_check_first_star(ptr);
+	j = ft_check_last_star(ptr);
+	ft_cut_width(ptr, 0, j);
+}
+
 void	ft_parse_piece(char *line, t_data *ptr)
 {
 	int i;
@@ -113,4 +225,6 @@ void	ft_parse_piece(char *line, t_data *ptr)
 		ptr->piece[i++] = ft_strdup(line);
 	}
 	ptr->piece[i] = NULL;
+	ft_cut_piece(ptr);
+//	ft_print_char_tab(ptr->piece);
 }
