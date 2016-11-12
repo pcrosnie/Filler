@@ -6,11 +6,11 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/24 13:16:13 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/11/11 10:39:48 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/11/11 15:16:07 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = paulo_player
+NAME = pcrosnie.filler
 
 LIB = libft/libft.a
 

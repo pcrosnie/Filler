@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:53:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/11 10:29:25 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/12 10:40:18 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		check_possible_sol(t_data *ptr, int i, int j)
 	int	touch_nb;
 	char err;
 
-	err = (ptr->c == 'X') ? 'C' : 'X';
+	err = (ptr->c == 'X') ? 'O' : 'X';
 	index = 0;
 	touch_nb = 0;
 	while (index < ptr->res_index)

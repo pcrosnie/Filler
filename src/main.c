@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/11 10:33:35 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/12 10:04:14 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int		ft_first_read(t_data *ptr)
 	get_next_line(0, &line);
 	if (ft_strstr(line, "exec p1 :") != NULL)
 	{
-		free(line);
+//		free(line);
 		ptr->c = 'O';
 		return (1);
 	}
 	if (ft_strstr(line, "exec p2 :") != NULL)
 	{
-		free(line);
+//		free(line);
 		ptr->c = 'X';
 		return (2);
 	}
-	free(line);
+//	free(line);
 	return (0);
 }
 
@@ -65,9 +65,9 @@ void	ft_free_dat(t_data *ptr)
 	while (i < 2)
 		free(ptr->piece[i++]);
 	free(ptr->piece);
-//	free(ptr->possible_positions[0]);
-//	free(ptr->possible_positions[1]);
-//	free(ptr->possible_positions);
+	free(ptr->possible_positions[0]);
+	free(ptr->possible_positions[1]);
+	free(ptr->possible_positions);
 }
 
 void	ft_output(int a, int b)
@@ -108,7 +108,9 @@ int		main(void)
 	t_data *ptr;
 	int i;
 	int check;
+	int	index;
 
+	index = 0;
 	i = 0;
 	check = 0;
 	line = (char *)malloc(sizeof(char) * (BUFF_SIZE + 2));
@@ -139,13 +141,12 @@ int		main(void)
 			ft_parse_piece(line, ptr);
 //			ft_print_char_tab(ptr->piece);
 			ft_check_possible_positions(ptr);
-			ft_putnbr(ptr->first_posx);
-			ft_putchar('\n');
-			ft_putnbr(ptr->first_posx);
 //			ft_print_values(ptr->possible_positions, ptr);
-			ptr->nb_sol = 0;
+//			while (ptr->possible_positions[1][index] - ptr->first_posy < 0 || ptr->possible_positions[0][index] - ptr->first_posx < 0)
+//				index++;
+			ft_output(ptr->possible_positions[1][index] - ptr->first_posy, ptr->possible_positions[0][index] - ptr->first_posx);
 //			ft_algo(ptr);
-			ft_free_dat(ptr);
+//			ft_free_dat(ptr);
 		}
 	}
 	return (0);
