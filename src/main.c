@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/12 10:04:14 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/12 11:08:13 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,10 @@ int		main(void)
 //			ft_print_char_tab(ptr->piece);
 			ft_check_possible_positions(ptr);
 //			ft_print_values(ptr->possible_positions, ptr);
-//			while (ptr->possible_positions[1][index] - ptr->first_posy < 0 || ptr->possible_positions[0][index] - ptr->first_posx < 0)
-//				index++;
+			while (ptr->possible_positions[1][index] - ptr->first_posy < 0 || ptr->possible_positions[0][index] - ptr->first_posx < 0)
+				index++;
 			ft_output(ptr->possible_positions[1][index] - ptr->first_posy, ptr->possible_positions[0][index] - ptr->first_posx);
+//			ft_output(ptr->first_posx, ptr->first_posy);
 //			ft_algo(ptr);
 //			ft_free_dat(ptr);
 		}
