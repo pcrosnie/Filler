@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/12 11:08:13 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/12 13:30:04 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,10 @@ int		main(void)
 	ptr->strat = 0;
 	ptr->nb_sol = 0;
 //	ptr->player = ft_first_read(ptr);
-	line = ft_memset(line, '\0', BUFF_SIZE + 1);
+//	line = ft_memset(line, '\0', BUFF_SIZE + 1);
 	while (get_next_line(0, &line))
 	{
+		index = 0;
 		if (ft_strstr(line, "$$$") != NULL)
 			ft_parse_player(line, ptr);
 		if (ft_strstr(line, "Plateau") != NULL)

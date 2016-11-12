@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 14:24:30 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/12 10:39:26 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/12 13:25:04 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	ft_parse_map(char *line, t_data *ptr)
 	i = 0;
 	ft_recup_map_size(line, ptr);
 	get_next_line(0, &line);
-	ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 2));
+	if (!ptr->map)
+		ptr->map = (char **)malloc(sizeof(char *) * (ptr->map_height + 2));
 	while (i < ptr->map_height)
 	{
 		get_next_line(0, &line);
@@ -115,8 +116,8 @@ int		ft_set_relative_coord(t_data *ptr, char *line, int i, int res_index)
 		}
 		if (line[j] == '*')
 		{
-			ptr->piece[0][res_index] = j - ptr->first_posx;
-			ptr->piece[1][res_index] = i - ptr->first_posy;
+			ptr->piece[0][res_index] = (char)j - (char)ptr->first_posx;
+			ptr->piece[1][res_index] = (char)i - (char)ptr->first_posy;
 			res_index++;
 		}
 		j++;
@@ -131,11 +132,14 @@ void	ft_parse_piece(char *line, t_data *ptr)
 	i = 0;
 	ptr->res_index = 0;
 	ft_recup_piece_size(line, ptr);
-	ptr->piece = (char **)ft_memalloc(sizeof(char *) * 2);
-	ptr->piece[0] = (char *)ft_memalloc(sizeof(char) * 100);
-	ptr->piece[1] = (char *)ft_memalloc(sizeof(char) * 100);
-	ptr->piece[0] = ft_memset(ptr->piece[0], '\0', 100);
-	ptr->piece[1] = ft_memset(ptr->piece[1], '\0', 100);
+	if (!ptr->piece)
+	{
+		ptr->piece = (char **)ft_memalloc(sizeof(char *) * 2);
+		ptr->piece[0] = (char *)ft_memalloc(sizeof(char) * 100);
+		ptr->piece[1] = (char *)ft_memalloc(sizeof(char) * 100);
+	}
+//	ptr->piece[0] = ft_memset(ptr->piece[0], '\0', 100);
+//	ptr->piece[1] = ft_memset(ptr->piece[1], '\0', 100);
 //	ptr->piece[2] = NULL;
 	while (i < ptr->piece_height)
 	{

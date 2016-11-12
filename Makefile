@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/24 13:16:13 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/11/11 15:16:07 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/11/12 11:58:20 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC = src/main.c src/ft_parse_info.c src/ft_check_pos.c
 
 SRCO = $(SRC:.c=.o)
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -g -fsanitize=address -Wall -Werror -Wextra
 
 all: $(NAME)
 
