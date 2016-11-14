@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:53:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/12 13:34:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/14 12:14:07 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,29 @@ int		check_possible_sol(t_data *ptr, int i, int j)
 	return (0);
 }
 
+void	get_ref_line(t_data *ptr)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < ptr->map_height)
+	{
+		j = 0;
+		while (j < ptr->map_width)
+		{
+			if (ptr->map[i][j] == ptr->c)
+			{
+				ptr->ref_line = i;
+				return;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_check_possible_positions(t_data *ptr)
 {
 	int i;
@@ -46,6 +69,8 @@ void	ft_check_possible_positions(t_data *ptr)
 	j = 0;
 	i = 0;
 	ptr->nb_sol = 0;
+	if (ptr->ref_line == 0)
+		get_ref_line(ptr);
 	if (!ptr->possible_positions)
 	{
 		ptr->possible_positions = (char **)ft_memalloc(sizeof(char *) * 2);
