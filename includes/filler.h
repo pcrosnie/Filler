@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:58:26 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/14 12:13:49 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/15 15:05:04 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct  s_data
 	char	c;
 	int		strat;
 	int		ref_line;
+	int		set_vert;
 	int		part;  /*0 en haut : 1 en bas */
 	int		nb_sol;
 	int		center;				/* center = 1 > me center = 2 > adv*/

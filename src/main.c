@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 11:22:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/11/14 12:41:21 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/11/18 11:20:01 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int		main(void)
 	ptr->piece_width = 0;
 	ptr->strat = 0;
 	ptr->ref_line = 0;
+	ptr->set_vert = 0;
 	ptr->nb_sol = 0;
 //	ptr->player = ft_first_read(ptr);
 //	line = ft_memset(line, '\0', BUFF_SIZE + 1);
